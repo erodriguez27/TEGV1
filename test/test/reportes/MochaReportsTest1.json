@@ -1,0 +1,120 @@
+{
+  "stats": {
+    "suites": 3,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2019-01-25T20:42:44.889Z",
+    "end": "2019-01-25T20:42:45.011Z",
+    "duration": 122,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "danger",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "1238abea-3496-4be8-bb44-ed2bb051a09f",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "8c373db1-2d5f-4edb-96ad-1c36977b654f",
+        "title": "Back Levante y cria",
+        "fullFile": "C:\\Users\\SME\\Documents\\ARP\\arp\\test\\testTry.js",
+        "file": "\\test\\testTry.js",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [],
+        "suites": [
+          {
+            "uuid": "b8e90e15-6cbe-4c1d-b40f-6126a28bcdab",
+            "title": "HousingWay",
+            "fullFile": "C:\\Users\\SME\\Documents\\ARP\\arp\\test\\testTry.js",
+            "file": "\\test\\testTry.js",
+            "beforeHooks": [],
+            "afterHooks": [],
+            "tests": [],
+            "suites": [
+              {
+                "uuid": "abff02fe-bec9-4575-a687-82c38dd0db58",
+                "title": "Pruebo spies",
+                "fullFile": "C:\\Users\\SME\\Documents\\ARP\\arp\\test\\testTry.js",
+                "file": "\\test\\testTry.js",
+                "beforeHooks": [],
+                "afterHooks": [],
+                "tests": [
+                  {
+                    "title": "Intento usar un spy sobre un model",
+                    "fullTitle": "Back Levante y cria HousingWay Pruebo spies Intento usar un spy sobre un model",
+                    "timedOut": false,
+                    "duration": 0,
+                    "state": "failed",
+                    "pass": false,
+                    "fail": true,
+                    "pending": false,
+                    "code": "// var spy = sinon.spy(model,\"DBisProgrammedHousingway\");\nvar stub = sinon.stub(model,\"DBisProgrammedHousingway\");\nstub.returns({programmed:true})\nchai.request(server)\n\t.post('/housingWay/deleteHousingWayById/')\n\t.send({\n\t\thousing_way_id: 1409,\n\t\tstage_id: 5, \n\t\tpartnership_id: 1, \n\t\tscenario_id:1\n\t})\n\t.end(function(err, res){\n\t\tres.should.be.json;\n\t\tres.should.have.status(200);\n\t\tshould.exist(res.body.data);\n\t\tres.body.data.should.be.a('array');\n\t\t// console.log(\"Aqui está mi spy \",spy)\n\t\tdone();\n\t\t\n\t});",
+                    "err": {
+                      "message": "AssertionError: expected { Object (_events, _eventsCount, ...) } to have status code 200 but got 409",
+                      "estack": "AssertionError: expected { Object (_events, _eventsCount, ...) } to have status code 200 but got 409\n    at C:\\Users\\SME\\Documents\\ARP\\arp\\test\\testTry.js:40:23\n    at Test.Request.callback (node_modules\\superagent\\lib\\node\\index.js:746:30)\n    at Test.<anonymous> (node_modules\\superagent\\lib\\node\\index.js:135:10)\n    at IncomingMessage.<anonymous> (node_modules\\superagent\\lib\\node\\index.js:923:12)\n    at endReadableNT (_stream_readable.js:1101:12)\n    at process._tickCallback (internal/process/next_tick.js:152:19)",
+                      "diff": "- 409\n+ 200\n"
+                    },
+                    "isRoot": false,
+                    "uuid": "7963fd02-8978-420c-b5f0-f6b5abea8a09",
+                    "isHook": false,
+                    "skipped": false
+                  }
+                ],
+                "suites": [],
+                "passes": [],
+                "failures": [
+                  "7963fd02-8978-420c-b5f0-f6b5abea8a09"
+                ],
+                "pending": [],
+                "skipped": [],
+                "duration": null,
+                "root": false,
+                "rootEmpty": false,
+                "_timeout": 2000
+              }
+            ],
+            "passes": [],
+            "failures": [],
+            "pending": [],
+            "skipped": [],
+            "duration": 0,
+            "root": false,
+            "rootEmpty": false,
+            "_timeout": 2000
+          }
+        ],
+        "passes": [],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 0,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 2000
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 2000
+  },
+  "copyrightYear": 2019
+}

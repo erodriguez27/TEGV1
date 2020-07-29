@@ -1,0 +1,146 @@
+POST http://192.168.1.24:3009/higherLayer/findMachineGroupByDayOfWork HTTP/1.1
+content-type: application/json
+
+{
+    "partnership_id": 1,
+    "date": "2019-08-04"
+}
+
+POST http://192.168.1.24:3009/higherLayer/findAllMachineGroup HTTP/1.1
+content-type: application/json
+
+{
+    "partnership_id": 1,
+    "day": "monday"
+}
+
+POST https://www.buscamarket.com/api/establishment/getEstablishmentbyCode HTTP/1.1
+content-type: application/json
+
+{
+    "code": "administrador"
+}
+
+POST http://192.168.1.57:3009/sltxbroilerDetail/addNewBroilerDetail HTTP/1.1
+content-type: application/json
+
+{
+    "record":[ { "slbroiler_id": 51,
+       "farm_id": 12,
+       "sheds": [ "11195", "11199", "11203" ],
+       "housing_quantity": 1000,
+       "housing_date": "2019-08-14" } ],
+  "init_date": "2019-09-02T04:00:00.000Z",
+  "end_date": "2019-09-08T04:00:00.000Z",
+  "gender": "H" ,
+    "lots": [{
+        "slbroiler_id": 45,
+        "quantity": 200
+    },
+    {
+        "slbroiler_id": 51,
+        "quantity": 200
+    }]
+}
+
+POST http://127.0.0.1:3009/sltxbroilerDetail/checkForPartitionAndProcess HTTP/1.1
+content-type: application/json
+
+{
+    "gender" : "H"
+}
+
+POST http://127.0.0.1:3009/sltxBreeding/findPostureCurveByBreed HTTP/1.1
+content-type: application/json
+
+{
+    "breed_id" : 3,
+    "start_posture_day" : "2019-01-28",
+    "scenario_id" : 1
+}
+
+Produccion::::
+
+DELETE http://127.0.0.1:3009/higherLayer/ HTTP/1.1
+content-type: application/json
+
+{
+    "stage_id":3,
+  "slbreeding_id": 31,
+    "search": {
+        "date1": "2019-01-01",
+        "date2": "2019-12-31", 
+        "partnership_id": 1} 
+}
+
+Incubacion:::::
+
+DELETE http://127.0.0.1:3009/higherLayer/ HTTP/1.1
+content-type: application/json
+
+{
+    "slincubator_detail_id": 26,
+    "incubator_id": 278,
+    "stage_id": 2
+}
+
+Engorde:::::
+
+DELETE http://127.0.0.1:3009/higherLayer/ HTTP/1.1
+content-type: application/json
+
+{
+    "beginning": "2019-09-01",
+    "ending" : "2019-09-30",
+    "gender": "H",
+    "lot": "1",
+    "stage_id": 1 
+}
+
+POST http://127.0.0.1:3009/sltxPostureCurve/findPostureCurveLot HTTP/1.1
+content-type: application/json
+
+{
+    "farm_id" : 8
+}
+
+GET http://127.0.0.1:3009/weight_mortality/getWeightFromSap HTTP/1.1
+content-type: application/json
+
+{
+}
+
+POST http://127.0.0.1:3009/broilerEviction/findBroilerClosedLot HTTP/1.1
+content-type: application/json
+
+{
+    "lot" : "1",
+    "type_bird": "P"
+}
+
+POST http://127.0.0.1:3009/synchronization/TosapEngordePesado HTTP/1.1
+content-type: application/json
+
+{
+    "correct" : [
+        {"id":35, "msg":"asd"},
+        {"id":36, "msg":"asd2"}
+    ],
+    "type_bird": "P"
+}
+
+POST http://127.0.0.1:3009/synchronization/confirmFromSapBroilerL HTTP/1.1
+content-type: application/json
+
+{
+    "records":[{"execution_date" : "2019-12-03",
+    "execution_quantity" :  1500,
+    "farm_code": "A711",
+    "shed_code": "A701",
+    "product_code": "46506",
+    "id": "0190117616",
+    "lot": "E9",
+    "incubatorLot": [{"lot": "I501","quantity":1500}]}]
+}
+
+ctrl+alt+r

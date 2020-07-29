@@ -1,0 +1,10 @@
+package.json: --reporter mocha-multi-reporters --reporter-options configFile=./test/config.json
+config.json: 
+{
+    "reporterEnabled": "spec, json"
+}
+
+
+
+
+--reporter-options reportDir=./test/reportes,reportFilename=MochaReportsTest1,overwrite=true

@@ -1,0 +1,15 @@
+Para usar travis api.
+
+Instalar ruby v2.6
+Instalar ruby client: gem install travis 
+hacer login en travis cli: travis login
+Obtener token de conexion: travis token
+
+
+
+
+Al pedir los repos del usuario de github con la api de travis, el campo id se refiere al id del repo para travis, el id del repo en github es el campo github_id
+El campo active indica si se ha activado el repo en travis.
+
+GET /repo/{repository.id}/builds para listar los build de un repository, cada build tiene varios jobs
+ 

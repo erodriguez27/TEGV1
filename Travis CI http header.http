@@ -1,0 +1,55 @@
+GET https://api.travis-ci.org/repos HTTP/1.1
+content-type: application/json,
+Travis-API-Version: 3
+Authorization: token Dea--S92bVe_y_MjCHVg8w
+
+{
+}
+
+Obtener los build de un repo
+GET https://api.travis-ci.org/repo/github/29005457/builds HTTP/1.1
+content-type: application/json,
+Travis-API-Version: 3
+Authorization: token Dea--S92bVe_y_MjCHVg8w
+
+{
+}
+
+Pide informacion de un build
+GET https://api.travis-ci.org/build/706291769 HTTP/1.1
+content-type: application/json,
+Travis-API-Version: 3
+Authorization: token Dea--S92bVe_y_MjCHVg8w
+
+{
+}
+
+cancelar un build
+POST https://api.travis-ci.org/build/706291769/cancel HTTP/1.1
+content-type: application/json,
+Travis-API-Version: 3
+Authorization: token Dea--S92bVe_y_MjCHVg8w
+
+{
+}
+
+Reinicia un build
+POST https://api.travis-ci.org/build/706291769/restart HTTP/1.1
+content-type: application/json,
+Travis-API-Version: 3
+Authorization: token Dea--S92bVe_y_MjCHVg8w
+
+{
+}
+
+Obtengo los repos de github via github api v3
+
+GET https://api.github.com/users/erodriguez27/repos HTTP/1.1
+content-type: application/json,
+Authorization: token 18af8d68c858e3dc3509e37cc57fd35595c1bd67
+
+{
+}
+
+
+Run:::::: ctr+alt+r

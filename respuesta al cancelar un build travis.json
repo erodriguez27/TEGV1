@@ -1,0 +1,37 @@
+HTTP/1.1 202 Accepted
+Date: Wed, 08 Jul 2020 20:45:14 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: close
+Strict-Transport-Security: max-age=15724800; includeSubDomains
+X-Endpoint: Travis::API::V3::Services::Build::Cancel
+X-OAuth-Scopes: public,private
+Vary: Accept-Encoding
+Content-Encoding: gzip
+X-Rack-Cache: invalidate, pass
+X-Request-ID: d2cd37123c125f50039676c5dfced51f
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Credentials: true
+Access-Control-Expose-Headers: Content-Type, Cache-Control, Expires, Etag, Last-Modified, X-Request-ID
+
+{
+  "@type": "pending",
+  "build": {
+    "@type": "build",
+    "@href": "/build/706291769",
+    "@representation": "minimal",
+    "id": 706291769,
+    "number": "16",
+    "state": "started",
+    "duration": null,
+    "event_type": "push",
+    "previous_state": "errored",
+    "pull_request_title": null,
+    "pull_request_number": null,
+    "started_at": "2020-07-08T20:45:00Z",
+    "finished_at": null,
+    "private": false
+  },
+  "state_change": "cancel",
+  "resource_type": "build"
+}
