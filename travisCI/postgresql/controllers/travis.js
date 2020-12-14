@@ -13,7 +13,7 @@ exports.getTravisToken = async function (req, res) {
                 console.log('lab', data)
                 arrTok.push(data);
             };
-
+console.log(commands)
         nrc.run(commands, { shell: true, onData: lab }).then(function (exitCodes) {
 
             console.log('Ttok', arrTok, arrTok.length);
@@ -48,7 +48,8 @@ exports.getrepos = async function(req, res) {
 
 
             res.status(200).json({
-                statusCode: 200
+                statusCode: 200,
+                data: resp.data
             });
             
 

@@ -12,6 +12,7 @@ var
     passport = require('passport'),
     session = require('express-session'),
     cookieParser = require('cookie-parser'),
+    // cookieSession = require('cookie-session'),
     logger = require('morgan'),
     cors = require('cors');
 PORT = process.env.PORT || config.port;
@@ -20,13 +21,13 @@ PORT = process.env.PORT || config.port;
 // app.use('/sltxInventory', api_sltxInventory);
 app.use(function (req, res, next) {
     // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept, authorization');
     
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:4200, http://127.0.0.1:3010, https://github.com/');
     
     // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
@@ -47,23 +48,40 @@ require('./passport.js')(passport);
 
 
 
-
-app.use(express.static(path.join(__dirname)));
+app.use(cors());
 app.use(cookieParser());
+
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({
     limit: '50mb',
     parameterLimit: 1000000,
     extended: false
 }));
-app.use(cors());
-app.use(helmet())
+
+
+app.use(express.static(path.join(__dirname)));
 app.use(session({
     secret: 'anything',
     resave: true,
-    rolling: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {
+        expires: 300000
+    }
 }));
+
+// app.use(cookieSession({
+//     name: 'session',
+//     secret:'secret',
+//         httpOnly:true
+//   }))
+
+// app.use(
+//     cookieSession({
+//         name:'session', //name of the cookie containing access token in the //browser
+//         secret:'secret',
+//         httpOnly:true
+//         }))
+app.use(helmet())
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -76,25 +94,6 @@ app.use(passport.session());
 
 const wrap = fn => (...args) => fn(...args).catch(args[2])
 
-
-
-
-
-
-
-
-
-
-
-// we will call this to start the GitHub Login process
-app.get('/auth/github', passport.authenticate('github', { scope: [ 'user:email', 'read:org', 'repo' ] }, {session: true}));
-
-// GitHub will call this URL
-app.get('/auth/github/callback', 
-passport.authenticate('github', { failureRedirect: '/' }),
-    function(req, res) {
-        res.redirect('/');
-    });
     
 app.get('/', function (req, res) {
     var html = "<ul>\
@@ -114,10 +113,6 @@ app.get('/', function (req, res) {
     res.send(html);
 });
 
-app.get('/logout', function(req, res){
-    req.logout();
-    res.redirect('/');
-});
 
 // Simple route middleware to ensure user is authenticated.
 //  Use this route middleware on any resource that needs to be protected.  If
@@ -136,6 +131,8 @@ app.get('/protected', ensureAuthenticated, function(req, res) {
 
 
 const api_travis = require('./routes/travis');
+const api_auth = require('./routes/auth');
 app.use('/travis', api_travis)
+app.use('/auth', api_auth)
 
 module.exports = app;

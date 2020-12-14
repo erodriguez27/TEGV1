@@ -143,4 +143,24 @@ content-type: application/json
     "incubatorLot": [{"lot": "I501","quantity":1500}]}]
 }
 
-ctrl+alt+r
+POST http://127.0.0.1:3009/medicineCalculation HTTP/1.1
+content-type: application/json
+
+{
+    "idScenario": 2,
+    "years": ["2020"]
+}
+
+GET http://127.0.0.1:3009/operationType/ HTTP/1.1
+content-type: application/json
+
+{
+}
+
+GET http://127.0.0.1:3010/auth/logout HTTP/1.1
+content-type: application/json
+
+{
+}
+
+ctrl+alt+r  

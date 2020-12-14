@@ -13,3 +13,5 @@ El campo active indica si se ha activado el repo en travis.
 
 GET /repo/{repository.id}/builds para listar los build de un repository, cada build tiene varios jobs
  
+
+El token de travis no cambia, puede ser una buena practica guardarlo en una bd?
